@@ -1,4 +1,7 @@
 const mongoose= require('mongoose');
+const User = require("../models/user");
+const CustomError = require('../utils/customError');
+const mailHelper=require('../utils/emailHelper')
 
 const issueSchema=new mongoose.Schema({
     issueTitle:{
@@ -25,6 +28,42 @@ const issueSchema=new mongoose.Schema({
     createdAt:{
         type: Date,
         default: Date.now
+    }
+});
+
+
+issueSchema.pre('save',async function(req,res,next){
+    
+    // console.log(this.user);
+    let userr=await User.findOne({typeOfUser:"homeConroller"})
+    try {
+        await mailHelper({
+            email:userr.email,
+            subject:this.issueTitle,
+            message:this.issueDescription
+        });
+    } catch (error) {
+        console.log(error);
+    }
+    userr=await User.findOne({typeOfUser:"cityConroller"})
+    try {
+        await mailHelper({
+            email:userr.email,
+            subject:this.issueTitle,
+            message:this.issueDescription
+        });
+    } catch (error) {
+        console.log(error);
+    }
+    userr=await User.findOne({typeOfUser:"StateConroller"})
+    try {
+        await mailHelper({
+            email:userr.email,
+            subject:this.issueTitle,
+            message:this.issueDescription
+        });
+    } catch (error) {
+        console.log(error);
     }
 });
 
