@@ -15,7 +15,12 @@ exports.addNewIssue =BigPromise( async(req, res,next) => {
                 category:category
             })
 
+<<<<<<< HEAD
             newIssue.save();
+=======
+            // console.log(newIssue);
+            await newIssue.save();
+>>>>>>> 2e2d56a93ef8115594167a29196e94d5ee9ba1a1
             res.status(200).json({
                 success:true,
                 newIssue
