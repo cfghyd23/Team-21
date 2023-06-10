@@ -93,6 +93,7 @@ exports.logout=BigPromise(async (req,res,next)=>{
 
 exports.forgotPassword=BigPromise(async (req,res,next)=>{
     const {email}=req.body;
+    console.log(email)
     const user=await User.findOne({email});
     if(!user){
         return next(new CustomError("Email not found",400))

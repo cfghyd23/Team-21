@@ -10,7 +10,7 @@ const {addNewIssue, showIssue} = require("../controllers/issueController");
 router.route("/signup").post(signup);
 router.route("/login").post(login);
 router.route("/logout").get(logout);
-router.route("/forgotPassword").get(forgotPassword);
+router.route("/forgotPassword").post(forgotPassword);
 router.route("/password/reset/:token").post(passwordReset);
 router.route("/userdashboard").get(isLoggedIn, getLoggedInUserDetails);
 
