@@ -1,7 +1,7 @@
 const express=require("express");
 const router=express.Router();
 
-const {signup,login,logout,forgotPassword,passwordReset, getLoggedInUserDetails}=require("../controllers/userContoller")
+const {signup,login,logout,forgotPassword,passwordReset, getLoggedInUserDetails, mailAll}=require("../controllers/userContoller")
 
 const {isLoggedIn,customRole}=require("../middlewares/user");
 const { addNewAnnouncement, showAnnouncement,showPersonalAnnouncement } = require("../controllers/announcementController");
@@ -28,5 +28,6 @@ router.route("/showAnnouncement/:id").get(isLoggedIn, showPersonalAnnouncement);
 router.route("/showAllIssuesById").get(isLoggedIn, showIssuebyId);
 router.route("/showIssue/:id").get(isLoggedIn, showPersonalIssue);
 router.route("/modifyIssue").post(isLoggedIn,customRole(...arr), modifyIssue);
+router.route("/mailAll").get(isLoggedIn,customRole(...arr), mailAll);
 
 module.exports=router;
