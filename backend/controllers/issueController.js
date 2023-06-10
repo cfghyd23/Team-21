@@ -39,3 +39,17 @@ exports.showIssue = BigPromise( async(req, res,next) => {
     })
 
 })
+
+exports.showPersonalIssue = BigPromise( async(req, res,next) => {
+    
+    Issue.find({}).then(function(foundItems){
+        console.log(foundItems);
+
+        res.status(200).json({
+            success:true,
+            foundItems
+        })
+
+    })
+
+})

@@ -34,3 +34,18 @@ exports.showAnnouncement = BigPromise( async(req, res,next) => {
     })
 
 })
+
+exports.showPersonalAnnouncement = BigPromise( async(req, res,next) => {
+    console.log(req.params.id);
+    console.log("hello");
+    const announcementId = req.params.id;
+
+    Announcement.findById(announcementId).then(function(foundItems){
+        // console.log(foundItems);
+
+        res.status(200).json({
+            success:true,
+            foundItems
+        })
+    })
+})
