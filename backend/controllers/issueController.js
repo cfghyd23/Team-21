@@ -38,11 +38,23 @@ exports.showIssue = BigPromise( async(req, res,next) => {
 
     })
 
+<<<<<<< HEAD
 })
 
 exports.showPersonalIssue = BigPromise( async(req, res,next) => {
     
     Issue.find({}).then(function(foundItems){
+=======
+});
+
+
+exports.showIssuebyId = BigPromise( async(req, res,next) => {
+    
+    // const issues=Issue.find({user:id})
+    // req.iss=issues
+    // next();
+    Issue.find({user:req.user.id}).then(function(foundItems){
+>>>>>>> 390bdff9a859573a301acf25f37dcef35c6e03ac
         console.log(foundItems);
 
         res.status(200).json({
@@ -52,4 +64,8 @@ exports.showPersonalIssue = BigPromise( async(req, res,next) => {
 
     })
 
+<<<<<<< HEAD
 })
+=======
+});
+>>>>>>> 390bdff9a859573a301acf25f37dcef35c6e03ac

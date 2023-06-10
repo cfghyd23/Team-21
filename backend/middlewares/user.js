@@ -1,4 +1,5 @@
 const User=require("../models/user");
+const Issue=require("../models/issue")
 const BigPromise=require('../middlewares/bigPromise');
 const CustomError=require('../utils/customError');
 const jwt=require("jsonwebtoken");
@@ -34,3 +35,24 @@ exports.customRole=(...roles)=>{
     };
     
 };
+
+
+// exports.customId=(id)=>{
+//     // return (req,res,next)=>{
+//     //     if(!roles.includes(req.user.typeOfUser)){
+//     //         console.log(req.user.typeOfUser);
+//     //         return next(new CustomError("you aren't allowed for this resource",403))
+//     //     }
+//     //     next()
+//     // };
+//     // const issues=Issue.find({user:id})
+//     // req.iss=issues
+//     // next();
+//     return (req,res,next)=>{
+//         if(!roles.includes(req.user.typeOfUser)){
+//             console.log(req.user.typeOfUser);
+//             return next(new CustomError("you aren't allowed for this resource",403))
+//         }
+//         next()
+//     };
+// };

@@ -35,7 +35,7 @@ const issueSchema=new mongoose.Schema({
 issueSchema.pre('save',async function(req,res,next){
     
     // console.log(this.user);
-    let userr=await User.findOne({typeOfUser:"homeConroller"})
+    let userr=await User.findOne({typeOfUser:"homeController"})
     try {
         await mailHelper({
             email:userr.email,
@@ -45,7 +45,7 @@ issueSchema.pre('save',async function(req,res,next){
     } catch (error) {
         console.log(error);
     }
-    userr=await User.findOne({typeOfUser:"cityConroller"})
+    userr=await User.findOne({typeOfUser:"cityController"})
     try {
         await mailHelper({
             email:userr.email,
@@ -55,7 +55,7 @@ issueSchema.pre('save',async function(req,res,next){
     } catch (error) {
         console.log(error);
     }
-    userr=await User.findOne({typeOfUser:"StateConroller"})
+    userr=await User.findOne({typeOfUser:"stateController"})
     try {
         await mailHelper({
             email:userr.email,
