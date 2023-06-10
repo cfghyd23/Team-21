@@ -15,15 +15,24 @@ exports.addNewIssue =BigPromise( async(req, res,next) => {
                 category:category
             })
 
-            // console.log(newIssue);
             newIssue.save();
             res.status(200).json({
                 success:true,
                 newIssue
             })
-
-
-            // res.redirect("/")
-        
     
+})
+
+exports.showIssue = BigPromise( async(req, res,next) => {
+    
+    Issue.find({}).then(function(foundItems){
+        console.log(foundItems);
+
+        res.status(200).json({
+            success:true,
+            foundItems
+        })
+
+    })
+
 })
