@@ -16,7 +16,9 @@ router.route("/userdashboard").get(isLoggedIn, getLoggedInUserDetails);
 
 router.route("/addNewAnnouncement").post(isLoggedIn,addNewAnnouncement);
 router.route("/addNewIssue").post(isLoggedIn,addNewIssue);
-router.route("/showIssue").get(isLoggedIn,customRole(['homeController','cityController','stateController']), showIssue);
+
+const arr=['cityController','stateController','homeController']
+router.route("/showIssue").get(isLoggedIn,customRole(...arr), showIssue);
 
 
 module.exports=router;

@@ -26,7 +26,8 @@ exports.isLoggedIn=BigPromise(async(req,res,next)=>{
 
 exports.customRole=(...roles)=>{
     return (req,res,next)=>{
-        if(!roles.includes(req.user.role)){
+        if(!roles.includes(req.user.typeOfUser)){
+            console.log(req.user.typeOfUser);
             return next(new CustomError("you aren't allowed for this resource",403))
         }
         next()
