@@ -3,9 +3,11 @@ require('dotenv').config();
 const app=express();
 const morgan=require("morgan");
 const cookieParser=require("cookie-parser");
+const cors = require('cors');
 
 
 //regular middlewares
+app.use(cors())
 app.use(express.json())
 app.use(express.urlencoded({extended:true}))
 
