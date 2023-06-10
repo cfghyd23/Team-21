@@ -1,7 +1,8 @@
+const BigPromise = require('../middlewares/bigPromise');
 const Issue = require('../models/issue')
 
-const addNewIssue = async(req, res) => {
-    try{
+const addNewIssue =BigPromise( async(req, res,next) => {
+
             const issueTitle = req.body.issueTitle;
             const issueDescription = req.body.issueDescription;
             const createdAt = req.body.createdAt;
@@ -19,9 +20,7 @@ const addNewIssue = async(req, res) => {
 
             // res.redirect("/")
         
-    } catch(error) {
-        console.log(error);
-    }
-}
+    
+})
 
 module.exports = addNewIssue

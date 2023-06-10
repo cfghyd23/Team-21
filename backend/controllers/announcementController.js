@@ -1,7 +1,8 @@
+const BigPromise = require('../middlewares/bigPromise');
 const Announcement = require('../models/announcement')
 
-const addNewAnnouncement = async(req, res) => {
-    try{
+const addNewAnnouncement =BigPromise (async(req, res,next) => {
+   
             const announcementTitle = req.body.announcementTitle;
             const announcementDescription = req.body.announcementDescription;
             const createdAt = req.body.createdAt;
@@ -19,9 +20,7 @@ const addNewAnnouncement = async(req, res) => {
 
             // res.redirect("/")
         
-    } catch(error) {
-        console.log(error);
-    }
-}
+    
+})
 
 module.exports = addNewAnnouncement
