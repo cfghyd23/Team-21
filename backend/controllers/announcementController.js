@@ -1,26 +1,26 @@
 const BigPromise = require('../middlewares/bigPromise');
 const Announcement = require('../models/announcement')
 
-const addNewAnnouncement =BigPromise (async(req, res,next) => {
+exports.addNewAnnouncement =BigPromise (async(req, res,next) => {
    
             const announcementTitle = req.body.announcementTitle;
             const announcementDescription = req.body.announcementDescription;
-            const createdAt = req.body.createdAt;
-            const userID = req.body.userID;
+            const user = req.user.id;
 
             const newAnnouncement = new Announcement({
                 announcementTitle: announcementTitle,
                 announcementDescription: announcementDescription,
-                createdAt: createdAt,
-                userID: userID
+                user: user
             })
 
             // console.log(newAnnouncement);
             newAnnouncement.save();
+            res.status(200).json({
+                success:true,
+                newAnnouncement
+            })
 
             // res.redirect("/")
         
     
 })
-
-module.exports = addNewAnnouncement

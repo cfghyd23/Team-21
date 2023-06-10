@@ -18,7 +18,7 @@ exports.isLoggedIn=BigPromise(async(req,res,next)=>{
     // if(decoded){
         console.log(decoded);
         req.user=await User.findById(decoded.id)
-        console.log(req.user);
+        // console.log(req.user);
     next();
     // }
 })

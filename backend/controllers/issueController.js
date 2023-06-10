@@ -1,26 +1,29 @@
 const BigPromise = require('../middlewares/bigPromise');
 const Issue = require('../models/issue')
 
-const addNewIssue =BigPromise( async(req, res,next) => {
+exports.addNewIssue =BigPromise( async(req, res,next) => {
 
             const issueTitle = req.body.issueTitle;
             const issueDescription = req.body.issueDescription;
-            const createdAt = req.body.createdAt;
-            const userID = req.body.userID;
+            const user = req.user.id;
+            const category=req.body.category;
 
             const newIssue = new Issue({
                 issueTitle: issueTitle,
-                issuetDescription: issueDescription,
-                createdAt: createdAt,
-                userID: userID
+                issueDescription: issueDescription,
+                user: user,
+                category:category
             })
 
             // console.log(newIssue);
             newIssue.save();
+            res.status(200).json({
+                success:true,
+                newIssue
+            })
+
 
             // res.redirect("/")
         
     
 })
-
-module.exports = addNewIssue

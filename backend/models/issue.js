@@ -9,7 +9,7 @@ const issueSchema=new mongoose.Schema({
         type: String,
         required: [true,"Please provide description"],
     },
-    userID:{
+    user:{
         type: mongoose.Schema.Types.ObjectId,
         ref: "User",
         required: true
