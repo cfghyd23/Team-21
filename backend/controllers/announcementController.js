@@ -13,14 +13,24 @@ exports.addNewAnnouncement =BigPromise (async(req, res,next) => {
                 user: user
             })
 
-            // console.log(newAnnouncement);
             await newAnnouncement.save();
             res.status(200).json({
                 success:true,
                 newAnnouncement
             })
 
-            // res.redirect("/")
-        
+})
+
+exports.showAnnouncement = BigPromise( async(req, res,next) => {
     
+    Announcement.find({}).then(function(foundItems){
+        console.log(foundItems);
+
+        res.status(200).json({
+            success:true,
+            foundItems
+        })
+
+    })
+
 })
