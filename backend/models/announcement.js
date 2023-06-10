@@ -15,7 +15,11 @@ const announcementSchema = mongoose.Schema({
         type: Date,
         default: Date.now
     },
-    userID: { type: mongoose.Schema.Types.ObjectId, ref: 'User' }
+    userID: { 
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'User',
+        required: true
+    }
 })
 
 const Announcement = mongoose.model("Announcement", announcementSchema);

@@ -14,7 +14,15 @@ exports.signup=BigPromise(async(req,res,next)=>{
     //     return next(new CustomError("photo is required for sample",400));
     // }
     
-    const {name,email,password}=req.body
+    const {name,
+        email,
+        password,
+        age,
+        phoneNumber,
+        location,
+        typeOfUser,
+        employmentStatus,
+        company}=req.body
 
     if(!email||!name||!password){
         return next(new CustomError('Name, email and password are required',400))
