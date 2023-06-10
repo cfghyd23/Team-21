@@ -2,10 +2,10 @@
   "name": "jpmc-cfg",
   "version": "1.0.0",
   "description": "",
-  "main": "app.js",
+  "main": "index.js",
   "scripts": {
-    "start": "node app.js",
-    "dev": "nodmeon app.js"
+    "start": "node index.js",
+    "dev": "nodemon index.js"
   },
   "author": "",
   "license": "ISC",
@@ -20,6 +20,7 @@
     "jsonwebtoken": "^9.0.0",
     "mongoose": "^7.2.3",
     "morgan": "^1.10.0",
+    "nodemailer": "^6.9.3",
     "validator": "^13.9.0"
   },
   "devDependencies": {
