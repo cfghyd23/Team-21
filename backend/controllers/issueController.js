@@ -38,4 +38,22 @@ exports.showIssue = BigPromise( async(req, res,next) => {
 
     })
 
-})
+});
+
+
+exports.showIssuebyId = BigPromise( async(req, res,next) => {
+    
+    // const issues=Issue.find({user:id})
+    // req.iss=issues
+    // next();
+    Issue.find({user:req.user.id}).then(function(foundItems){
+        console.log(foundItems);
+
+        res.status(200).json({
+            success:true,
+            foundItems
+        })
+
+    })
+
+});
