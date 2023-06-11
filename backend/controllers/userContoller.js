@@ -271,3 +271,42 @@ exports.adminDeleteOneUser=BigPromise(async (req,res,next)=>{
         success:true,
     })
 });
+
+// exports.mailAll=BigPromise(async (req,res,next)=>{
+//     let userr=await User.find({}).then(function(foundItems){
+//         // console.log(foundItems);
+//         foundItems.forEach(item){
+//             try {
+//                 await mailHelper({
+//                     email:userr.email,
+//                     subject:this.issueTitle,
+//                     message:this.issueDescription
+//                 });
+//             } catch (error) {
+//                 console.log(error);
+//             }
+//         };
+// });
+// });
+
+exports.mailAll=BigPromise(async (req,res,next)=>{
+    let userr = await User.find()
+    let arr=[]
+    for (let index = 0; index < userr.length; index++) {
+        const element = userr[index];
+        if(element.typeOfUser!=='homeController'&&element.typeOfUser!=='cityController'&&element.typeOfUser!=='stateController'){
+            arr.push(element)
+        }
+    }
+    for (let index = 0; index < arr.length; index++) {
+        try {
+                            await mailHelper({
+                                email:arr[index].email,
+                                subject:"Feedback Form - We care for you",
+                                message:"https://docs.google.com/forms/d/e/1FAIpQLSdFC583L0Dplh0V4OCzHF0N9-COglo8S7A9Kxf6jT4PX0Pqeg/viewform?usp=sf_link"
+                            });
+                        } catch (error) {
+                            console.log(error);
+                        }
+    }
+})
