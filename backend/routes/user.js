@@ -4,8 +4,8 @@ const router=express.Router();
 const {signup,login,logout,forgotPassword,passwordReset, getLoggedInUserDetails}=require("../controllers/userContoller")
 
 const {isLoggedIn,customRole}=require("../middlewares/user");
-const { addNewAnnouncement, showAnnouncement } = require("../controllers/announcementController");
-const {addNewIssue, showIssue} = require("../controllers/issueController");
+const { addNewAnnouncement, showAnnouncement ,showPersonalAnnouncement} = require("../controllers/announcementController");
+const {addNewIssue, showIssue,showIssuebyId} = require("../controllers/issueController");
 
 router.route("/signup").post(signup);
 router.route("/login").post(login);
